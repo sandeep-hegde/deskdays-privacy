@@ -25,7 +25,7 @@ For questions about privacy or the app:
 
 ## License
 
-Privacy policy content © 2025 Advaya Apps. All rights reserved.
+Privacy policy content © 2026 Advaya Apps. All rights reserved.
 
 ---
 
