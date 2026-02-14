@@ -3,291 +3,642 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Deskdays</title>
+    <title>Privacy Policy — Deskdays</title>
     <style>
+        :root {
+            --blue: #007AFF;
+            --blue-soft: rgba(0, 122, 255, 0.08);
+            --blue-border: rgba(0, 122, 255, 0.15);
+            --red: #FF3B30;
+            --ink: #1d1d1f;
+            --ink-secondary: #3d3d3d;
+            --ink-tertiary: #6e6e73;
+            --ink-quaternary: #86868b;
+            --ink-faint: #aeaeb2;
+            --surface: #f5f5f7;
+            --surface-card: #ffffff;
+            --card-fill: rgba(120, 120, 128, 0.04);
+            --card-border: rgba(120, 120, 128, 0.15);
+            --divider: rgba(60, 60, 67, 0.08);
+            --radius: 12px;
+            --font: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
+            --font-rounded: -apple-system, BlinkMacSystemFont, 'SF Pro Rounded', 'SF Pro Display', 'Helvetica Neue', sans-serif;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: #1d1d1f;
-            background: #fafafa;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            padding: 60px;
-            border-radius: 12px;
-            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 48px;
-            padding-bottom: 32px;
-            border-bottom: 1px solid #e5e5e7;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            font-weight: 600;
-            color: #1d1d1f;
-            margin-bottom: 12px;
-        }
-
-        .app-name {
-            font-size: 1.2em;
-            color: #6e6e73;
+            font-family: var(--font);
             font-weight: 400;
+            line-height: 1.65;
+            color: var(--ink-secondary);
+            background: var(--surface);
+            -webkit-font-smoothing: antialiased;
         }
 
-        .last-updated {
-            color: #86868b;
-            font-size: 0.9em;
-            margin-top: 16px;
+        /* ── Top accent line ── */
+        .top-bar {
+            height: 3px;
+            background: linear-gradient(90deg, var(--blue), #5AC8FA, var(--blue));
         }
 
-        h2 {
-            font-size: 1.5em;
+        /* ── Nav ── */
+        .nav {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 20px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-family: var(--font-rounded);
             font-weight: 600;
-            color: #1d1d1f;
-            margin-top: 48px;
-            margin-bottom: 16px;
+            font-size: 0.95em;
+            color: var(--ink);
+            letter-spacing: -0.01em;
         }
 
-        h3 {
-            font-size: 1.2em;
+        .nav-contact {
+            font-size: 0.85em;
+            color: var(--blue);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .nav-contact:hover {
+            opacity: 0.7;
+        }
+
+        /* ── Container card ── */
+        .container {
+            max-width: 720px;
+            margin: 0 auto 40px;
+            padding: 0 32px;
+        }
+
+        .card {
+            background: var(--surface-card);
+            border-radius: 16px;
+            padding: 48px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.04);
+        }
+
+        /* ── Hero ── */
+        .hero {
+            margin-bottom: 36px;
+        }
+
+        .hero-label {
+            font-family: var(--font-rounded);
+            font-size: 0.75em;
             font-weight: 600;
-            color: #1d1d1f;
-            margin-top: 32px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 10px;
+            opacity: 0;
+            animation: fadeUp 0.5s ease forwards;
+        }
+
+        .hero h1 {
+            font-family: var(--font-rounded);
+            font-weight: 700;
+            font-size: 2.2em;
+            color: var(--ink);
+            letter-spacing: -0.025em;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeUp 0.5s ease 0.05s forwards;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeUp 0.5s ease 0.1s forwards;
+        }
+
+        .hero-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+
+        .hero-meta-label {
+            font-size: 0.68em;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--ink-faint);
+        }
+
+        .hero-meta-value {
+            font-size: 0.88em;
+            color: var(--ink-tertiary);
+        }
+
+        /* ── Privacy promise ── */
+        .promise {
+            background: var(--blue-soft);
+            border: 1px solid var(--blue-border);
+            border-radius: var(--radius);
+            padding: 18px 22px;
+            margin-bottom: 40px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            opacity: 0;
+            animation: fadeUp 0.5s ease 0.15s forwards;
+        }
+
+        .promise-icon {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: var(--blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .promise-icon svg {
+            width: 18px;
+            height: 18px;
+            color: white;
+        }
+
+        .promise p {
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: var(--ink-secondary);
+            margin: 0;
+        }
+
+        .promise strong {
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        /* ── Table of contents ── */
+        .toc {
+            background: var(--card-fill);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius);
+            padding: 22px 26px;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeUp 0.5s ease 0.2s forwards;
+        }
+
+        .toc-title {
+            font-size: 0.68em;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ink-faint);
             margin-bottom: 12px;
         }
 
-        p {
-            margin-bottom: 16px;
-            color: #1d1d1f;
-            font-size: 1.05em;
+        .toc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 24px;
         }
 
-        ul {
-            margin-bottom: 24px;
-            padding-left: 24px;
+        .toc-link {
+            font-size: 0.88em;
+            color: var(--ink-secondary);
+            text-decoration: none;
+            padding: 3px 0;
+            transition: color 0.15s;
         }
 
-        li {
-            margin-bottom: 12px;
-            color: #1d1d1f;
-            font-size: 1.05em;
+        .toc-link:hover {
+            color: var(--blue);
         }
 
-        .highlight-box {
-            background: #f5f5f7;
-            border-left: 4px solid #0071e3;
-            padding: 20px 24px;
-            margin: 32px 0;
-            border-radius: 8px;
+        .toc-num {
+            display: inline-block;
+            width: 22px;
+            font-size: 0.8em;
+            color: var(--ink-faint);
+            font-weight: 500;
         }
 
-        .highlight-box p {
-            margin-bottom: 8px;
+        /* ── Sections ── */
+        .section {
+            margin-bottom: 36px;
         }
 
-        .highlight-box p:last-child {
+        .section:last-child {
             margin-bottom: 0;
         }
 
-        .section {
-            margin-bottom: 32px;
-        }
-
-        strong {
+        .section h2 {
+            font-family: var(--font-rounded);
             font-weight: 600;
-            color: #1d1d1f;
+            font-size: 1.3em;
+            color: var(--ink);
+            letter-spacing: -0.015em;
+            margin-bottom: 14px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--divider);
         }
 
-        a {
-            color: #0071e3;
+        .section p {
+            margin-bottom: 14px;
+            font-size: 0.95em;
+            line-height: 1.7;
+        }
+
+        .section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section h3 {
+            font-size: 0.9em;
+            font-weight: 600;
+            color: var(--ink);
+            margin-top: 22px;
+            margin-bottom: 10px;
+        }
+
+        .section ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 16px;
+        }
+
+        .section li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 8px;
+            font-size: 0.93em;
+            line-height: 1.65;
+        }
+
+        .section li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 9px;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--blue);
+            opacity: 0.35;
+        }
+
+        .section a {
+            color: var(--blue);
             text-decoration: none;
         }
 
-        a:hover {
+        .section a:hover {
             text-decoration: underline;
         }
 
-        footer {
-            margin-top: 64px;
-            padding-top: 32px;
-            border-top: 1px solid #e5e5e7;
-            text-align: center;
-            color: #86868b;
+        .section strong {
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        /* ── Contact card ── */
+        .contact-card {
+            background: var(--card-fill);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius);
+            padding: 20px 22px;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            margin-top: 14px;
+        }
+
+        .contact-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: var(--blue-soft);
+            border: 1px solid var(--blue-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-family: var(--font-rounded);
+            font-weight: 600;
+            font-size: 1em;
+            color: var(--blue);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+
+        .contact-name {
+            font-weight: 600;
+            color: var(--ink);
             font-size: 0.9em;
         }
 
-        @media (max-width: 768px) {
+        .contact-role {
+            font-size: 0.8em;
+            color: var(--ink-quaternary);
+        }
+
+        .contact-email {
+            font-size: 0.85em;
+            color: var(--blue);
+            text-decoration: none;
+            margin-top: 2px;
+        }
+
+        .contact-email:hover {
+            text-decoration: underline;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 32px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--ink-quaternary);
+            font-size: 0.78em;
+        }
+
+        /* ── Animations ── */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 640px) {
             .container {
-                padding: 32px 24px;
+                padding: 0 16px;
             }
 
-            h1 {
-                font-size: 2em;
+            .card {
+                padding: 28px 24px;
+                border-radius: 14px;
             }
 
-            h2 {
-                font-size: 1.3em;
+            .hero h1 {
+                font-size: 1.7em;
+            }
+
+            .hero-meta {
+                gap: 16px;
+            }
+
+            .toc-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .promise {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav {
+                padding: 16px;
+            }
+
+            .footer {
+                padding: 0 16px 40px;
+                flex-direction: column;
+                gap: 4px;
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
+    <div class="top-bar"></div>
+
+    <nav class="nav">
+        <span class="nav-brand">Deskdays</span>
+        <a href="mailto:advaya.apps@gmail.com" class="nav-contact">Contact</a>
+    </nav>
+
     <div class="container">
-        <header>
-            <h1>Privacy Policy</h1>
-            <div class="app-name">Deskdays</div>
-            <div class="last-updated">Last Updated: January 13, 2026</div>
-        </header>
+        <div class="card">
+            <div class="hero">
+                <div class="hero-label">Privacy Policy</div>
+                <h1>Your data stays on your device.</h1>
+                <div class="hero-meta">
+                    <div class="hero-meta-item">
+                        <span class="hero-meta-label">App</span>
+                        <span class="hero-meta-value">Deskdays for macOS</span>
+                    </div>
+                    <div class="hero-meta-item">
+                        <span class="hero-meta-label">Updated</span>
+                        <span class="hero-meta-value">February 14, 2026</span>
+                    </div>
+                    <div class="hero-meta-item">
+                        <span class="hero-meta-label">Version</span>
+                        <span class="hero-meta-value">1.1</span>
+                    </div>
+                </div>
+            </div>
 
-        <div class="highlight-box">
-            <p><strong>Privacy First:</strong> Deskdays is built with your privacy as a priority. All your data stays on your device. We don't collect, store, or share any personal information.</p>
+            <div class="promise">
+                <div class="promise-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                </div>
+                <p><strong>Privacy First.</strong> Deskdays is built with your privacy as a priority. All your data stays on your device. We don't collect, store, or share any personal information.</p>
+            </div>
+
+            <div class="toc">
+                <div class="toc-title">Contents</div>
+                <div class="toc-grid">
+                    <a href="#introduction" class="toc-link"><span class="toc-num">01</span> Introduction</a>
+                    <a href="#not-collected" class="toc-link"><span class="toc-num">02</span> What We Don't Collect</a>
+                    <a href="#local-data" class="toc-link"><span class="toc-num">03</span> Data Stored Locally</a>
+                    <a href="#purchases" class="toc-link"><span class="toc-num">04</span> In-App Purchases</a>
+                    <a href="#third-party" class="toc-link"><span class="toc-num">05</span> Third-Party Services</a>
+                    <a href="#network" class="toc-link"><span class="toc-num">06</span> Network Activity</a>
+                    <a href="#photos" class="toc-link"><span class="toc-num">07</span> Photos and Images</a>
+                    <a href="#children" class="toc-link"><span class="toc-num">08</span> Children's Privacy</a>
+                    <a href="#retention" class="toc-link"><span class="toc-num">09</span> Retention & Deletion</a>
+                    <a href="#changes" class="toc-link"><span class="toc-num">10</span> Policy Changes</a>
+                    <a href="#rights" class="toc-link"><span class="toc-num">11</span> Your Rights</a>
+                    <a href="#contact" class="toc-link"><span class="toc-num">12</span> Contact Us</a>
+                </div>
+            </div>
+
+            <div class="section" id="introduction">
+                <h2>Introduction</h2>
+                <p>Welcome to Deskdays, a macOS menubar calendar app with customizable themes, countdowns, and calendar event display. This Privacy Policy explains how we handle your information when you use our app.</p>
+                <p>The bottom line: <strong>We don't collect any personal data.</strong> Your calendar events, images, countdowns, and settings are stored locally on your Mac and never leave your device.</p>
+            </div>
+
+            <div class="section" id="not-collected">
+                <h2>Information We Don't Collect</h2>
+                <p>Deskdays does not collect, transmit, or store any of the following:</p>
+                <ul>
+                    <li>Personal information (name, email, phone number, etc.)</li>
+                    <li>Location data</li>
+                    <li>Analytics or usage data</li>
+                    <li>Device identifiers</li>
+                    <li>IP addresses</li>
+                    <li>Browsing history or web data</li>
+                    <li>Calendar event data</li>
+                    <li>Crash reports sent to external servers</li>
+                </ul>
+            </div>
+
+            <div class="section" id="local-data">
+                <h2>Data Stored Locally</h2>
+                <p>The following data is stored <strong>only on your Mac</strong> and never transmitted anywhere:</p>
+
+                <h3>Countdowns</h3>
+                <ul>
+                    <li>Countdown titles and dates you create</li>
+                    <li>Custom images you choose for countdown backgrounds</li>
+                    <li>Gradient and theme preferences</li>
+                </ul>
+
+                <h3>Calendar Customization</h3>
+                <ul>
+                    <li>Month-specific images you upload</li>
+                    <li>Theme selections (seasons, minimalist, etc.)</li>
+                    <li>Hemisphere preference (Northern/Southern)</li>
+                </ul>
+
+                <h3>Calendar Events</h3>
+                <ul>
+                    <li>Deskdays can display events from Apple Calendar using Apple's EventKit framework</li>
+                    <li>Calendar access requires your explicit permission, which you can grant or revoke at any time in System Settings</li>
+                    <li>Event data (titles, dates, times, calendar names) is read directly from Apple Calendar and displayed in the app</li>
+                    <li>No event data is ever transmitted, stored externally, or shared with anyone</li>
+                    <li>Deskdays only reads events — it never creates, modifies, or deletes your calendar events</li>
+                </ul>
+
+                <h3>App Settings</h3>
+                <ul>
+                    <li>Week start preference (Monday/Sunday)</li>
+                    <li>Launch at login preference</li>
+                </ul>
+
+                <h3>Local Error Logs</h3>
+                <ul>
+                    <li>Crash logs are stored locally on your device for debugging purposes</li>
+                    <li>These logs are never automatically transmitted to us</li>
+                    <li>You have full control and can delete them anytime</li>
+                </ul>
+
+                <p>All this data is stored in secure local storage on your Mac and is protected by macOS sandboxing.</p>
+            </div>
+
+            <div class="section" id="purchases">
+                <h2>In-App Purchases</h2>
+                <p>All purchase transactions are processed entirely by Apple. We do not receive, store, or have access to any payment information (credit cards, billing details, Apple ID, etc.). Apple's privacy policy governs all purchase-related data.</p>
+                <p>For details, see <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple's Privacy Policy</a>.</p>
+            </div>
+
+            <div class="section" id="third-party">
+                <h2>Third-Party Services</h2>
+                <p><strong>None.</strong> Deskdays does not integrate with any third-party services, analytics platforms, or advertising networks. The app is built entirely using Apple's native frameworks with zero third-party dependencies.</p>
+            </div>
+
+            <div class="section" id="network">
+                <h2>Network Activity</h2>
+                <p>Deskdays makes <strong>no network requests</strong> except for communication with Apple's StoreKit service to verify your premium purchase status when you make a purchase or restore purchases.</p>
+                <p>No data is sent to any server we control or operate.</p>
+            </div>
+
+            <div class="section" id="photos">
+                <h2>Photos and Images</h2>
+                <p>When you choose custom images for your calendar or countdowns:</p>
+                <ul>
+                    <li>Images are selected from your Mac's photo library or file system</li>
+                    <li>Images are stored securely within the app's protected storage on your Mac</li>
+                    <li>Images never leave your device</li>
+                    <li>You can delete images at any time through the app</li>
+                </ul>
+                <p>We do not access your photo library beyond the images you explicitly choose to use.</p>
+            </div>
+
+            <div class="section" id="children">
+                <h2>Children's Privacy</h2>
+                <p>Deskdays does not knowingly collect any data from anyone, including children under 13. Since we don't collect any personal information, the app is safe for all ages.</p>
+            </div>
+
+            <div class="section" id="retention">
+                <h2>Data Retention and Deletion</h2>
+                <p>Since all data is stored locally on your device:</p>
+                <ul>
+                    <li>Data persists only as long as you keep the app installed</li>
+                    <li>Uninstalling Deskdays removes all app data including countdowns, images, and settings</li>
+                    <li>Trial and premium status information is managed through standard macOS security mechanisms</li>
+                </ul>
+            </div>
+
+            <div class="section" id="changes">
+                <h2>Changes to This Policy</h2>
+                <p>We may update this Privacy Policy occasionally to reflect changes in the app or legal requirements. When we do:</p>
+                <ul>
+                    <li>We'll update the "Last Updated" date at the top</li>
+                    <li>Significant changes will be communicated through the app or this page</li>
+                    <li>Continued use of the app after changes constitutes acceptance</li>
+                </ul>
+            </div>
+
+            <div class="section" id="rights">
+                <h2>Your Rights</h2>
+                <p>Since we don't collect personal data, there's nothing to request, export, or delete from our side. You have full control over your data:</p>
+                <ul>
+                    <li><strong>Access:</strong> All your data is on your Mac in the app</li>
+                    <li><strong>Export:</strong> Images and settings are in your local file system</li>
+                    <li><strong>Delete:</strong> Uninstall the app to remove all local data</li>
+                </ul>
+            </div>
+
+            <div class="section" id="contact">
+                <h2>Contact Us</h2>
+                <p>If you have questions about this Privacy Policy or Deskdays' privacy practices:</p>
+                <div class="contact-card">
+                    <div class="contact-avatar">S</div>
+                    <div class="contact-info">
+                        <span class="contact-name">Sandeep Hegde</span>
+                        <span class="contact-role">Developer, Advaya Apps</span>
+                        <a href="mailto:advaya.apps@gmail.com" class="contact-email">advaya.apps@gmail.com</a>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="section">
-            <h2>Introduction</h2>
-            <p>Welcome to Deskdays, a macOS menubar calendar app with customizable themes and countdowns. This Privacy Policy explains how we handle your information when you use our app.</p>
-            <p>The bottom line: <strong>We don't collect any personal data.</strong> Your calendar images, countdowns, and settings are stored locally on your Mac and never leave your device.</p>
-        </div>
-
-        <div class="section">
-            <h2>Information We Don't Collect</h2>
-            <p>Deskdays does not collect, transmit, or store any of the following:</p>
-            <ul>
-                <li>Personal information (name, email, phone number, etc.)</li>
-                <li>Location data</li>
-                <li>Analytics or usage data</li>
-                <li>Device identifiers</li>
-                <li>IP addresses</li>
-                <li>Browsing history or web data</li>
-                <li>Crash reports sent to external servers</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>Data Stored Locally</h2>
-            <p>The following data is stored <strong>only on your Mac</strong> and never transmitted anywhere:</p>
-
-            <h3>Countdowns</h3>
-            <ul>
-                <li>Countdown titles and dates you create</li>
-                <li>Custom images you choose for countdown backgrounds</li>
-                <li>Gradient and theme preferences</li>
-            </ul>
-
-            <h3>Calendar Customization</h3>
-            <ul>
-                <li>Month-specific images you upload</li>
-                <li>Theme selections (seasons, minimalist, etc.)</li>
-                <li>Hemisphere preference (Northern/Southern)</li>
-            </ul>
-
-            <h3>App Settings</h3>
-            <ul>
-                <li>Week start preference (Monday/Sunday/Saturday)</li>
-                <li>Launch at login preference</li>
-            </ul>
-
-            <h3>Local Error Logs</h3>
-            <ul>
-                <li>Crash logs are stored locally on your device for debugging purposes</li>
-                <li>These logs are never automatically transmitted to us</li>
-                <li>You have full control and can delete them anytime</li>
-            </ul>
-
-            <p>All this data is stored in secure local storage on your Mac and is protected by macOS sandboxing.</p>
-        </div>
-
-        <div class="section">
-            <h2>In-App Purchases</h2>
-            <p>All purchase transactions are processed entirely by Apple. We do not receive, store, or have access to any payment information (credit cards, billing details, Apple ID, etc.). Apple's privacy policy governs all purchase-related data.</p>
-            <p>For details, see <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple's Privacy Policy</a>.</p>
-        </div>
-
-        <div class="section">
-            <h2>Third-Party Services</h2>
-            <p><strong>None.</strong> Deskdays does not integrate with any third-party services, analytics platforms, or advertising networks. The app is built entirely using Apple's native frameworks with zero third-party dependencies.</p>
-        </div>
-
-        <div class="section">
-            <h2>Network Activity</h2>
-            <p>Deskdays makes <strong>no network requests</strong> except for communication with Apple's StoreKit service to verify your premium purchase status when you make a purchase or restore purchases.</p>
-            <p>No data is sent to any server we control or operate.</p>
-        </div>
-
-        <div class="section">
-            <h2>Photos and Images</h2>
-            <p>When you choose custom images for your calendar or countdowns:</p>
-            <ul>
-                <li>Images are selected from your Mac's photo library or file system</li>
-                <li>Images are stored securely within the app's protected storage on your Mac</li>
-                <li>Images never leave your device</li>
-                <li>You can delete images at any time through the app</li>
-            </ul>
-            <p>We do not access your photo library beyond the images you explicitly choose to use.</p>
-        </div>
-
-        <div class="section">
-            <h2>Children's Privacy</h2>
-            <p>Deskdays does not knowingly collect any data from anyone, including children under 13. Since we don't collect any personal information, the app is safe for all ages.</p>
-        </div>
-
-        <div class="section">
-            <h2>Data Retention and Deletion</h2>
-            <p>Since all data is stored locally on your device:</p>
-            <ul>
-                <li>Data persists only as long as you keep the app installed</li>
-                <li>Uninstalling Deskdays removes all app data including countdowns, images, and settings</li>
-                <li>Trial and premium status information is managed through standard macOS security mechanisms</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>Changes to This Policy</h2>
-            <p>We may update this Privacy Policy occasionally to reflect changes in the app or legal requirements. When we do:</p>
-            <ul>
-                <li>We'll update the "Last Updated" date at the top</li>
-                <li>Significant changes will be communicated through the app or this page</li>
-                <li>Continued use of the app after changes constitutes acceptance</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>Your Rights</h2>
-            <p>Since we don't collect personal data, there's nothing to request, export, or delete from our side. You have full control over your data:</p>
-            <ul>
-                <li><strong>Access:</strong> All your data is on your Mac in the app</li>
-                <li><strong>Export:</strong> Images and settings are in your local file system</li>
-                <li><strong>Delete:</strong> Uninstall the app to remove all local data</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>Contact Us</h2>
-            <p>If you have questions about this Privacy Policy or Deskdays' privacy practices, please contact us:</p>
-            <p>
-                <strong>Email:</strong> <a href="mailto:advaya.apps@gmail.com">advaya.apps@gmail.com</a><br>
-                <strong>Developer:</strong> Sandeep Hegde, Advaya Apps
-            </p>
-        </div>
-
-        <footer>
-            <p>© 2026 Advaya Apps. All rights reserved.</p>
-            <p>Deskdays is built with privacy and simplicity in mind.</p>
-        </footer>
     </div>
+
+    <footer class="footer">
+        <span>&copy; 2026 Advaya Apps. All rights reserved.</span>
+        <span>Built with privacy in mind.</span>
+    </footer>
 </body>
 </html>
